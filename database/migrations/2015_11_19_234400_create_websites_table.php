@@ -31,8 +31,6 @@ class CreateWebsitesTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('website_id')->unsigned();
             $table->foreign('website_id')->references('id')->on('websites')->onDelete('cascade');
-            $table->integer('subject_user_id')->unsigned();
-            $table->foreign('subject_user_id')->references('id')->on('subject_user')->onDelete('cascade');
             $table->timestamps();
         });
     }

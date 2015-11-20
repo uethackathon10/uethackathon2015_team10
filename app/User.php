@@ -28,7 +28,14 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password', 'skype', 'disqus'];
+    protected $fillable = [
+        'name', 
+        'email', 
+        'password', 
+        'skype', 
+        'disqus', 
+        'avatar'
+    ];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -38,7 +45,7 @@ class User extends Model implements AuthenticatableContract,
     protected $hidden = ['password', 'remember_token'];
 
     public function created_subjects() {
-        return $this->hasMany('App\Subject');
+        return $this->hasMany('App\Subject', 'creator_id');
     }
 
     public function studied_subjects() {
@@ -46,15 +53,15 @@ class User extends Model implements AuthenticatableContract,
     }
 
     public function created_books() {
-        return $this->hasMany('App\Book');
+        return $this->hasMany('App\Book', 'creator_id');
     }
 
     public function created_websites() {
-        return $this->hasMany('App\Website');
+        return $this->hasMany('App\Website', 'creator_id');
     }
 
     public function created_persons() {
-        return $this->hasMany('App\Person');
+        return $this->hasMany('App\Person', 'creator_id');
     }
 
     public function studied_books() {
