@@ -19,11 +19,11 @@ class Subject extends Model
     }
 
     public function recommended_subjects() {
-    	return $this->belongsToMany('App\Subject', 'subject_subject', 'recommended_subject_id', 'main_subject_id');
+    	return $this->belongsToMany('App\Subject', 'subject_subject', 'main_subject_id', 'recommend_subject_id');
     }
 
     public function advanced_subject() {
-    	return $this->belongsToMany('App\Subject', 'subject_subject', 'main_subject_id', 'recommended_subject_id');
+    	return $this->belongsToMany('App\Subject', 'subject_subject', 'recommend_subject_id', 'main_subject_id');
     }
 
     public function books() {
