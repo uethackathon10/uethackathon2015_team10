@@ -14,6 +14,11 @@ use App\Contracts\Search;
 |
 */
 
+// Homepage
+Route::get('/', function() {
+	return view('pages.index');
+});
+
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
@@ -25,8 +30,5 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 
 // User route
-Route::get('/', function() {
-	return \Auth::user();
-});
 
 Route::get('/users/{id}/profile', 'UsersController@show');
